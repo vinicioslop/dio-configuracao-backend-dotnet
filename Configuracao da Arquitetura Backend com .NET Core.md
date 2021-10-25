@@ -23,6 +23,13 @@
   - "ValidaCampoViewModelOutput.cs"
 - Em "Startup.cs" modificar o "services.AddControllers()"
 - Cria-se a pasta "Filters" na raiz do projeto e dentro dela se cria o "ValidacaoModelStateCustomizado.cs"
-- 
 
 ## Anotações da segunda parte
+
+- Abrir o gerenciador de pacotes do NuGet e instalar:
+  - "Microsoft.AspNetCore.Authentication"
+  - "Microsoft.AspNetCore.Authentication.JwtBearer" verificar problemas com a versão mais recente
+- Em "Startup.cs" adicionar o trecho "var secret...;" e "services.AddAuthentication()"
+- Em "appsettings.json" adicionar " "JwtConfigurations":  "Secret", "
+- Em "UsuarioController.cs" adicionar a lógica para login
+- Dentro de "Controllers" criar o controller "CursosController.cs"
