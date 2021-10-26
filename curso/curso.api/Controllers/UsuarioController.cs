@@ -1,17 +1,15 @@
 ﻿using curso.api.Filters;
+using curso.api.Infraestruture.Data;
 using curso.api.Models;
 using curso.api.Models.Usuarios;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace curso.api.Controllers
 {
@@ -68,6 +66,10 @@ namespace curso.api.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistroViewModel registroViewModel)
         {
+            var options = new DbContextOptions<CursoDbContext>;
+
+            CursoDbContext contexto = new CursoDbContext(options);
+            
             return Created("", registroViewModel);
         }
     }

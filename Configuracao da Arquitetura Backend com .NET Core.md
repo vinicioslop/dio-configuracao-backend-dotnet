@@ -47,7 +47,7 @@
 
   
 
-  ## Anotações da segunda parte
+  ## Anotações da terceira parte
 
 - Dentro da raiz do projeto criar as pastas "Business" e "Infraestruture"
 
@@ -55,7 +55,15 @@
 
   - Dentro dessa pasta criar as classes "Usuario" e "Curso"
 
-- Instalar a dependência ao "Microsoft.EntityFrameworkCore" através do gerenciador de pacotes NuGet
+- Instalar a dependência ao "Microsoft.EntityFrameworkCore" e "Microsoft.EntityFrameworkCore.Relational" através do gerenciador de pacotes NuGet
 
-- Dentro da pasta "Infraestruture" criar a classe "CursosDbContext.cs"
+- Dentro da pasta "Infraestruture" criar a pasta "Data"
+
+  - Dentro desta pasta criar a classe "CursoDbContext.cs"
+  - Dentro desta pasta criar a pasta "Mappings"
+    - Dentro desta pasta criar as classes "UsuarioMapping.cs" e "CursoMapping.cs"
+
+- "ctor + TAB" para gerar um construtor com o nome da classe atual
+
+- 
 
