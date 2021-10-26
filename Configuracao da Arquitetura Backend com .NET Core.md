@@ -29,7 +29,33 @@
 - Abrir o gerenciador de pacotes do NuGet e instalar:
   - "Microsoft.AspNetCore.Authentication"
   - "Microsoft.AspNetCore.Authentication.JwtBearer" verificar problemas com a versão mais recente
+  
 - Em "Startup.cs" adicionar o trecho "var secret...;" e "services.AddAuthentication()"
+
 - Em "appsettings.json" adicionar " "JwtConfigurations":  "Secret", "
+
 - Em "UsuarioController.cs" adicionar a lógica para login
+
 - Dentro de "Controllers" criar o controller "CursosController.cs"
+
+- Dentro da pasta "Models" criar a pasta "Cursos"
+
+  - Dentro da pasta criada criar a classe "CursoViewModelInput.cs"
+  - Dentro da pasta criada criar a classe "CursoViewModelOutput.cs"
+
+- Em "Startup.cs" adicionar o trecho acima de "app.UseAutorization()" "var o trecho "app.UseAuthentication()"
+
+  
+
+  ## Anotações da segunda parte
+
+- Dentro da raiz do projeto criar as pastas "Business" e "Infraestruture"
+
+- Dentro de "Business" criar a pasta "Entities"
+
+  - Dentro dessa pasta criar as classes "Usuario" e "Curso"
+
+- Instalar a dependência ao "Microsoft.EntityFrameworkCore" através do gerenciador de pacotes NuGet
+
+- Dentro da pasta "Infraestruture" criar a classe "CursosDbContext.cs"
+
