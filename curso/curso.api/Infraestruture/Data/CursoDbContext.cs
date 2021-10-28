@@ -6,8 +6,7 @@ namespace curso.api.Infraestruture.Data
 {
     public class CursoDbContext : DbContext
     {
-        public CursoDbContext(DbContextOptions<CursoDbContext> options)
-            : base(options)
+        public CursoDbContext(DbContextOptions<CursoDbContext> options) : base(options)
         {
 
         }

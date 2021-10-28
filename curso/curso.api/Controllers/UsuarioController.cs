@@ -1,4 +1,5 @@
-﻿using curso.api.Filters;
+﻿using curso.api.Business.Entities;
+using curso.api.Filters;
 using curso.api.Infraestruture.Data;
 using curso.api.Models;
 using curso.api.Models.Usuarios;
@@ -8,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -61,16 +63,39 @@ namespace curso.api.Controllers
             });
         }
 
+        /// <sumary>
+        /// Este serviço permite cadastrar um usuário não existente.
+        /// </sumary>
+        /// <param name="registroViewModelInput">View model de registro de login</param>
+        [SwaggerResponse(statusCode: 200, description: "Sucesso ao autenticar", Type = typeof(LoginViewModelInput))]
+        [SwaggerResponse(statusCode: 400, description: "Campos obrigatórios", Type = typeof(ValidaCampoViewModelOutput))]
+        [SwaggerResponse(statusCode: 500, description: "Erro interno", Type = typeof(ErroGenericoViewModel))]
         [HttpPost]
         [Route("registrar")]
         [ValidacaoModelStateCustomizado]
-        public IActionResult Registrar(RegistroViewModel registroViewModel)
+        public IActionResult Registrar(RegistroViewModelInput registroViewModelInput)
         {
-            var options = new DbContextOptions<CursoDbContext>;
+            var optionsBuilder = new DbContextOptionsBuilder<CursoDbContext>();
+            optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=CURSO;Trusted_Connection=True;");
+            CursoDbContext contexto = new CursoDbContext(optionsBuilder.Options);
 
-            CursoDbContext contexto = new CursoDbContext(options);
+            // var contexto = new DbFactoryDbContext();
+
+            var migracoesPendentes = contexto.Database.GetPendingMigrations();
+            if(migracoesPendentes.Count() > 0)
+            {
+                contexto.Database.Migrate();
+            }
             
-            return Created("", registroViewModel);
+            var usuario = new Usuario();
+            usuario.Login = registroViewModelInput.Login;
+            usuario.Senha = registroViewModelInput.Senha;
+            usuario.Email = registroViewModelInput.Email;
+            contexto.Usuario.Add(usuario);
+
+            contexto.SaveChanges();
+
+            return Created("", registroViewModelInput);
         }
     }
 

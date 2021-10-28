@@ -6,7 +6,7 @@
 - Ir em properties, "launchSettings.json"
   - Apagar as referencias a "weaterforecast", deixando vazio
 - Em "Controllers", clicar com o botão direito e criar um novo controlador com base em API vazio chamado "UsuarioController"
-- Cria-se uma pasta chamada "Models", e dentro dela uma pasta chamada "Usuarios"
+- Cria-se um repositório chamada "Models", e dentro dela um repositório chamada "Usuarios"
 - Dentro de "Usuarios" cria-se o arquivo "LoginViewModelInput"
 - Dentro de "Usuarios" cria-se o arquivo "RegistroViewModelInput"
 - Clicar com o botão direito no projeto, ir em propridades
@@ -22,7 +22,7 @@
   - "ErroGenericoViewModel.cs"
   - "ValidaCampoViewModelOutput.cs"
 - Em "Startup.cs" modificar o "services.AddControllers()"
-- Cria-se a pasta "Filters" na raiz do projeto e dentro dela se cria o "ValidacaoModelStateCustomizado.cs"
+- Cria-se o repositório "Filters" na raiz do projeto e dentro dela se cria o "ValidacaoModelStateCustomizado.cs"
 
 ## Anotações da segunda parte
 
@@ -38,10 +38,10 @@
 
 - Dentro de "Controllers" criar o controller "CursosController.cs"
 
-- Dentro da pasta "Models" criar a pasta "Cursos"
+- Dentro da repositório "Models" criar o repositório "Cursos"
 
-  - Dentro da pasta criada criar a classe "CursoViewModelInput.cs"
-  - Dentro da pasta criada criar a classe "CursoViewModelOutput.cs"
+  - Dentro do repositório criada criar a classe "CursoViewModelInput.cs"
+  - Dentro do repositório criada criar a classe "CursoViewModelOutput.cs"
 
 - Em "Startup.cs" adicionar o trecho acima de "app.UseAutorization()" "var o trecho "app.UseAuthentication()"
 
@@ -49,21 +49,38 @@
 
   ## Anotações da terceira parte
 
-- Dentro da raiz do projeto criar as pastas "Business" e "Infraestruture"
+- Dentro da raiz do projeto criar os repositórios "Business" e "Infraestruture"
 
-- Dentro de "Business" criar a pasta "Entities"
+- Dentro de "Business" criar o repositório "Entities"
 
-  - Dentro dessa pasta criar as classes "Usuario" e "Curso"
+  - Dentro desse repositório criar as classes "Usuario" e "Curso"
 
-- Instalar a dependência ao "Microsoft.EntityFrameworkCore" e "Microsoft.EntityFrameworkCore.Relational" através do gerenciador de pacotes NuGet
+- Instalar as dependências através do gerenciador de pacotes NuGet:
 
-- Dentro da pasta "Infraestruture" criar a pasta "Data"
+  - "Microsoft.EntityFrameworkCore"
+  - "Microsoft.EntityFrameworkCore.Relational"
+  - "Microsoft.EntityFrameworkCore.SqlServer"
+  - "Microsoft.EntityFrameworkCore.Tools" 
 
-  - Dentro desta pasta criar a classe "CursoDbContext.cs"
-  - Dentro desta pasta criar a pasta "Mappings"
-    - Dentro desta pasta criar as classes "UsuarioMapping.cs" e "CursoMapping.cs"
+- Dentro do repositório "Infraestruture" criar a repositório "Data"
+
+  - Dentro deste repositório criar a classe "CursoDbContext.cs"
+  - Dentro deste repositório criar o repositório "Mappings"
+    - Dentro desta repositório criar as classes "UsuarioMapping.cs" e "CursoMapping.cs"
 
 - "ctor + TAB" para gerar um construtor com o nome da classe atual
+
+- Criar o repositório "Configurations" na raiz do projeto
+
+  - Dentro deste repositório criar a classe "DbFactoryDbContext"
+
+- Ir em Tools > NuGet Package Manager > Package Manager Console
+
+  - ```powershell
+    Add-Migration Base-inicial
+    ```
+
+## Anotações da quarta parte
 
 - 
 
