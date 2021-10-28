@@ -6,10 +6,7 @@ namespace curso.api.Infraestruture.Data
 {
     public class CursoDbContext : DbContext
     {
-        public CursoDbContext(DbContextOptions<CursoDbContext> options) : base(options)
-        {
-
-        }
+        public CursoDbContext(DbContextOptions<CursoDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,5 +16,6 @@ namespace curso.api.Infraestruture.Data
         }
 
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Curso> Curso { get; set; }
     }
 }

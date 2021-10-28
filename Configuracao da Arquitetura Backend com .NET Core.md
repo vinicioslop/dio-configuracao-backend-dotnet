@@ -82,5 +82,45 @@
 
 ## Anotações da quarta parte
 
+- Dentro do repositório "Business" criar o repositório "Repositories"
+
+  - Dentro dela criar a interface "IUsuarioRepository.cs"
+
+- Dentro do repositório "Infraestruture > Data" criar o repositório "Repositories"
+
+  - Dentro dela criar a classe "UsuarioRepository.cs"
+
+- Em "Startup.cs" adcionar em "ConfigureServices"
+
+  - ```c#
+    services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+    ```
+
+  - ```c#
+    services.AddDbContext<CursoDbContext>(...);
+    ```
+
+- Em "appsettings.json" adiocionar:
+
+  - ```json
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=CURSO;TrustedConnection=True;"
+      },
+    ```
+
+- Dentro do repositório "Configurations" criar a interface "IAuthenticationService.cs"
+
+  - Dentro deste repositório criar a classe "JwtService.cs" que implementará "IAuthenticationService.cs"
+
+- Dentro do repositório "Business > Repositories" criar a interface "ICursoRepository.cs"
+
+- Dentro do repositório "Insfraestruture > Data > Repositories" criar a classe "CursoRepository.cs"
+
+- Em "Startup.cs" adcionar em "ConfigureServices"
+
+  - ```c#
+    services.AddScoped<IAuthenticationService, JwtService>();
+    ```
+
 - 
 
